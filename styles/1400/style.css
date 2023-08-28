@@ -9,7 +9,7 @@ body {
 
 /* FONTS */
 
-    section h1, .item_description span,.point span,.producer span,
+    section h1, .item_description span,.point span, .company,
     .actual_cost, .old_cost, .qnt_info,.delivery_block_adres, 
     .delivery_block_info_text, .delivery_block_info_text_inner,
     .card_block_info_text,.card_block_line_text,.card_block_line_2,
@@ -26,7 +26,7 @@ body {
     }
 
     .header_text,.item_description span,.item_dark span,.point span,
-    .producer span,.old_cost,.qnt_info,.delivery_block_adres,
+    .company,.old_cost,.qnt_info,.delivery_block_adres,
     .delivery_block_date,.delivery_block_info_text, .delivery_block_info_text_inner,
     .card_block_info_text,.card_block_line_2,.card_block_line_text,.button_part_line_text,
     .footer_text {
@@ -69,7 +69,7 @@ body {
         color: #000;
     }
 
-    .point span, .producer span, .old_cost {
+    .point span, .company, .old_cost {
         color:#A0A0A4;
     }
 
@@ -166,7 +166,7 @@ body {
     }
 
     main, aside, section {
-        height: 1809px;
+        max-height: 1809px;
     }
     #header_title p,#header_input::placeholder,.busket_checkbox label,.item_title_dark  {
         line-height: 24px;
@@ -193,40 +193,381 @@ body {
 
 /* MARGIN */
 
-.price_block_title, .delivery_block_title, .card_block_title, 
-.button_part_line_text,.card_block_line_2, .busket_header p,
-.qnt_info,.old_cost, .actual_cost,.item_info_title, .producer,
-.point, .item_dark, .item_title_dark, .item_description span, 
-section h1, header {
-    margin: 0;
-}
+    .price_block_title, .delivery_block_title, .card_block_title, 
+    .button_part_line_text,.card_block_line_2, .busket_header p,
+    .qnt_info,.old_cost, .actual_cost,.item_info_title, .producer,
+    .point, .item_dark, .item_title_dark, .item_description span, 
+    section h1, header {
+        margin: 0;
+    }
 
-.card_block_describe, .card_block_info, .price_block_line,.producer {
-    margin-top: 4px; 
-}
+    .card_block_describe, .card_block_info, .price_block_line,.producer {
+        margin-top: 4px; 
+    }
 
-/*  ICONS  */
+    /*  ICONS  */
 
-.plus_icon, .minus_icon, #search_icon {
-    width: 24px;
-    height: 24px;
-}
+    .plus_icon, .minus_icon, #search_icon {
+        width: 24px;
+        height: 24px;
+    }
 
-.favorite_icon, .delete_icon, .edit_icon, .info_icon, .arrow_up_icon {
-    width: 20px;
-    height: 20px;
-}
+    .favorite_icon, .delete_icon, .edit_icon, .info_icon, .arrow_up_icon {
+        width: 20px;
+        height: 20px;
+    }
 
-/* TEXT */
+    .favorite_icon {
+        fill: #000;
+    }
 
-.actual_cost,.old_cost, .actual_cost span, .card_block_info_text  {
-    text-align: right;
-}
+    .favorite_icon:hover {
+        fill: #CB11AB;
+    }
 
-.qnt_count, .btn_text, .footer_text {
-    text-align: center;
-}
+    .delete_icon {
+        fill: #000;
+    }
 
+    .delete_icon:hover {
+        fill: #F55123;
+    }
+
+    /* TOOLTIP */
+
+    .tooltip {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        z-index: 5;
+    }
+    
+    .tooltip::before {
+        width: 20px;
+        height: 20px; 
+    }
+
+    .tooltip_text {
+        display: none;
+        visibility: hidden;
+        background-color: #FFFFFF;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: relative;
+        right: 115px;
+        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+        transition: opacity 0.3s;
+    }
+
+    .tooltip_content_container {
+        visibility: hidden;
+        width: 248px;
+        height: 80px;
+        margin-top: 11px;
+        margin-bottom: 13px;
+        padding: 0px 16px;
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tooltip_header {
+        visibility: hidden;
+        width: 248px;
+        height: 16px;
+        margin: 0;
+        align-self: stretch;
+        color:  #000;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: left;
+    }
+
+    .tooltip_OGRN {
+        visibility: hidden;
+        width: 248px;
+        height: 16px;
+        align-self: stretch;
+        color: #000;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: left;
+    }
+
+    .tooltip_adres {
+        visibility: hidden;
+        width: 248px;
+        height: 32px;
+        align-self: stretch;
+        color: #000;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: left;
+    }
+
+    .tooltip:hover .tooltip_text {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        width: 280px;
+        height: 104px;
+    }
+
+    .tooltip_content_container ::after {
+        visibility: visible;
+    }
+
+    .tooltip_header, .tooltip_OGRN, .tooltip_adres, ::after{
+        visibility: visible;
+    }
+
+    /* FREE TOOLTIP */
+    
+    #card_tooltip_container,
+    #bottom_card_tooltip_container{
+        width: 0;
+        height: 0;
+    }
+
+    #bottom_card_tooltip_container span .free_delivery_tooltip,
+    #card_tooltip_container span .free_delivery_tooltip {
+        display: none;
+        visibility: hidden;
+    }
+
+    .free_delivery_tooltip {
+        display: none;
+        visibility: hidden;
+        position: relative;
+        transition: opacity 0.3s;
+        z-index: 5;
+        width: 256px;
+        height: 32px;
+        right: 99px;
+        top: 20px;
+        padding: 10px 16px 14px 16px;
+        border-radius: 8px;
+        background: #FFF;
+        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    #bottom_card_tooltip {
+        position: relative;
+        top: 10px;
+    }
+
+    .delivery_tooltip_content {
+        visibility: hidden;
+        width: 256px;
+        height: 32px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1 0 0;
+        align-self: stretch;
+        color: #000;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+    }
+
+    #bottom_card_tooltip_container:hover .free_delivery_tooltip, .delivery_tooltip_content {
+        display: block;
+        visibility: visible;
+    }
+
+    #card_tooltip_container:hover .free_delivery_tooltip, .delivery_tooltip_content{
+        display: block;
+        visibility: visible;
+    }
+    
+    /* OLD COST TOOLTIP */
+
+    .old_cost_tooltip {
+        display: none;
+        visibility: hidden;
+        position: relative;
+        right: 100px;
+        top: 5px;
+        width: 207px;
+        height: 40px;
+        padding: 11px 16px 13px 16px;
+        gap: 8px;
+        border-radius: 8px;
+        z-index: 5;
+        display: inline-flex;
+        align-items: flex-start;
+        background: var(--light-background-nav-bar, #FFF);
+        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    }
+    
+    .old_cost_tooltip_sales {
+        width: 142px;
+        height: 40px;
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .old_cost_tooltip_prices {
+        width: 57px;
+        height: 40px;
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        align-self: stretch;
+    }
+
+    .tooltip_sales_line {
+        width: 100%;
+        height: 16px;
+        margin: 0;
+        color: var(--system-gray, #A0A0A4);
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: start;
+    }
+
+    .tooltip_prices_line {
+        width: 100%;
+        height: 16px;
+        margin: 0;
+        color: var(--light-system-text, #000);
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    #old_cost_tooltip_1 {
+        height: 10px;
+    }
+    
+    #old_cost_tooltip_1:hover .old_cost_tooltip{
+        visibility: visible;
+    }
+
+
+    /* CUSTOM RADIO INPUT */
+
+    /* для элемента input c type="radio" */
+    .custom-radio {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    
+    /* для элемента label связанного с .custom-radio */
+    .custom-radio+label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+    }
+    
+    /* создание в label псевдоэлемента  before со следующими стилями */
+    .custom-radio+label::before {
+        content: '';
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border: 1px solid #adb5bd;
+        border-radius: 50%;
+        margin-right: 0.5em;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+    }
+    
+    /* стили при наведении курсора на радио */
+    .custom-radio:not(:disabled):not(:checked)+label:hover::before {
+        border-color: #b60773;
+    }
+    
+    /* стили для активной радиокнопки (при нажатии на неё) */
+    .custom-radio:not(:disabled):active+label::before {
+        background-color: #b60773;;
+        border-color: #b60773;;
+    }
+    
+    /* стили для радиокнопки, находящейся в фокусе */
+    .custom-radio:focus+label::before {
+        box-shadow: 0 0 0 0.2rem rgba(226, 94, 238, 0.418);
+    }
+    
+    /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+    .custom-radio:focus:not(:checked)+label::before {
+        border-color: #b60773;
+    }
+    
+    /* стили для радиокнопки, находящейся в состоянии checked */
+    .custom-radio:checked+label::before {
+        background-color: #CB11AB;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    /* CUSTOM CURSOR */
+
+    .checkbox {
+        cursor: url("../Cursor/Курсор-пальчик.svg"), pointer;
+    }
+
+    #old_cost_tooltip_1 {
+        cursor: url("../Cursor/Курсор-пальчик.svg"), pointer;
+    }
+
+    .favorite_icon, .delete_icon, .info_icon, .edit_icon, .arrow_up_icon {
+        cursor: url("../Cursor/Курсор-пальчик.svg"), pointer;
+    }
+
+    .delivery_block_info_text_inner {
+        cursor: url("../Cursor/Курсор-пальчик.svg"), pointer;
+    }
+
+    #paying_change_btn, #delivery_change_btn {
+        cursor: url("../Cursor/Курсор-пальчик.svg"), pointer;
+    }
+
+    /* TEXT */
+
+    .actual_cost,.old_cost, .actual_cost span, .card_block_info_text  {
+        text-align: right;
+    }
+
+    .qnt_count, .btn_text, .footer_text {
+        text-align: center;
+    }
+
+
+    /* //////////////////////////// */
+    #first_delivery_date,
+    #first_delivery_date_title,
+    #second_delivery_date,
+    #second_delivery_date_title,
+    #second_items_row,
+    #first_items_row,
+    #item_1_photo_container,
+    #item_2_photo_container,
+    #item_3_photo_container {
+        display: none;
+    }
+        
 /* HEADER */
 
     header, .radius {
@@ -497,7 +838,7 @@ section h1, header {
         gap: 6px;
     }
 
-    .producer span {
+    .company{
         width: 112px;
     }
 
@@ -514,7 +855,7 @@ section h1, header {
     }
 
     .actual_cost {
-        width: 100%;
+        width: 120px;
         height: 28px;
         margin-bottom: 5px;
         font-size: 20px;
@@ -607,12 +948,6 @@ section h1, header {
         border-radius: 4px;
     }
 
-    .mir_icon {
-        width: 30px;
-        height: 9.333px;
-        flex-shrink: 0;
-    }
-
     .price_shipping_icon{
         width: 22px;
         height: 22px;
@@ -637,6 +972,7 @@ section h1, header {
 
     .delivery_block_info {
         width: 365px;
+        height: 52px;
         padding: 8px 8px 12px 8px;
         margin-top: 12px;
     }
@@ -745,7 +1081,7 @@ section h1, header {
 
     .ordering_info {
         width: 843px;
-        height: 322px;
+        max-height: 322px;
         padding: 16px 24px 24px 24px;
         border-radius: 16px;
         gap: 16px;
@@ -819,7 +1155,7 @@ section h1, header {
 
     .ordering_info_container {
         width: 843px;
-        height: 228px;
+        max-height: 228px;
         gap: 32px;
         display: flex;
         align-items: flex-start;
@@ -828,7 +1164,7 @@ section h1, header {
 
     .ordering_info_container_titles {
         width: 153px;
-        height: 228px;
+        max-height: 228px;
         padding-left: 0px;
         gap: 16px;
         display: flex;
@@ -881,7 +1217,7 @@ section h1, header {
 
     .ordering_info_container_content {
         width: 658px;
-        height: 228px;
+        max-height: 228px;
         display: flex;
         padding-right: 0px;
         flex-direction: column;
@@ -1022,22 +1358,11 @@ section h1, header {
     }
 
     .back_delivery_description {
-        width: 372px;
         height: 18px; 
         gap: 4px;
         display: flex;
         align-items: baseline;
         color: #000;
-        font-size: 13px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 16px;
-    }
-
-    .back_delivery_description span {
-        width: 62px;
-        height: 16px; 
-        color: #0CB477;
         font-size: 13px;
         font-style: normal;
         font-weight: 400;
@@ -1062,7 +1387,7 @@ section h1, header {
         margin: 0;
     }
 
-    .recipient_info_container {
+    #recipient_info_container {
         width: 700px;
         height: 128px;
         display: flex;

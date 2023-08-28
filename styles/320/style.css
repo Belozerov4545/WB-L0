@@ -100,23 +100,27 @@ body {
     
     main {
         width: 320px;
-        height: 2718px;
-        /* padding: 0px 16px 0px 16px; */
+        max-height: 2718px;
         gap: 32px;
         background-color: #F6F6FA; 
         display: flex;
         flex-direction: column;
     }
 
+
     section {
         width: 288px;
-        height: 1195px;
+        max-height: 1195px;
         gap: 16px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         align-self: stretch;
         flex: 1 0 0;
+    }
+
+    .main_section {
+        max-height: none;
     }
 
     section h1 {
@@ -134,7 +138,6 @@ body {
 
     aside {
         width: 320px;
-        /* height: 1080px; */
         gap: 12px;
         display: flex;
         flex-direction: column;
@@ -148,6 +151,22 @@ body {
         height: 20px;
     }
 
+    .favorite_icon {
+        fill: #000;
+    }
+    
+    .favorite_icon:hover {
+        fill: #CB11AB;
+    }
+
+    .delete_icon {
+        fill: #000;
+    }
+    
+    .delete_icon:hover {
+        fill: #F55123;
+    }
+    
     aside, .busket_header, .busket_checkbox, .item_card {
         display: flex; 
     }
@@ -191,6 +210,7 @@ body {
     }
 
     .not_available_mobile {
+        max-height: 563px;
         margin-top: 48px;
         padding-right: 16px;
         padding-left: 16px;
@@ -218,7 +238,7 @@ body {
     }
 
     .in_stock_mobile {
-        height: 568px;
+        max-height: 568px;
         padding-right: 16px;
         padding-left: 16px;
         gap: 12px;
@@ -326,7 +346,7 @@ body {
     }
 
     .actual_cost {
-        width: 63;
+        width: 104px;
         height: 24px;
         margin: 0;
         margin-right: 5px;
@@ -348,6 +368,7 @@ body {
         font-style: normal;
         font-weight: 700;
         line-height: 24px;
+        padding-left: 3px;
     }
 
     .old_cost {
@@ -436,11 +457,6 @@ body {
         height: 24px;
     }
 
-    .favorite_icon, .delete_icon {
-        width: 20px;
-        height: 20px;
-    }
-
     .qnt_container {
         width: 80px;
         height: 32px;
@@ -501,27 +517,6 @@ body {
     #item_1_block_mobile {
         height: 114px;
     }
-    /* #item_1 {
-        height: 163px;
-    }
-
-    #item_2 {
-        height: 170px;
-        margin-top: 20px;
-    }
-
-    #item_3 {
-        height: 163px;
-        margin-top: 20px;
-    }
-
-    #item_1_not_available, #item_2_not_available, #item_3_not_available {
-        height: 108px;
-    }
-
-    #item_2_not_available, #item_3_not_available {
-        margin-top: 20px;
-    } */
 
     .ordering_info {
         display: none;
@@ -534,7 +529,6 @@ body {
         padding: 16px 0px 24px 0px;
         flex-direction: column;
         align-items: center;
-        /* gap: 24px; */
         align-self: stretch;
         border-radius: 16px;
         background: var(--background-white, #FFF);
@@ -548,7 +542,7 @@ body {
 
     .ordering_info_container_mobile {
         width: 288px;
-        height: 380px;
+        max-height: 380px;
         margin-top: 8px;
         padding: 0px 16px;
         gap: 16px;
@@ -588,7 +582,7 @@ body {
 
     .date_items_block_mobile {
         width: 288px;
-        height: 208px;
+        max-height: 208px;
         gap: 24px;
         display: flex;
         flex-direction: column;
@@ -624,6 +618,17 @@ body {
         flex-direction: column;
         align-items: flex-start;
         align-self: stretch;
+    }
+
+    /* //////////////////////////// */
+    #first_delivery_date_mobile,
+    /* #second_delivery_date_mobile, */
+    #second_items_row_mobile,
+    /* #second_delivery_date_title, */
+    #item_1_photo_container_mobile,
+    #item_2_photo_container_mobile,
+    #item_3_photo_container_mobile {
+        display: none;
     }
 
 /* ////////////////////////////////////////////////// */
@@ -813,7 +818,7 @@ body {
 
     .items_row {
         width: 288px;
-        height: 56px; 
+        max-height: 56px; 
         display: flex;
         align-items: flex-start;
         align-self: stretch;
@@ -915,24 +920,6 @@ body {
         margin: 0;
     }
 
-    .mir_icon_container {
-        width: 32px;
-        height: 24px;
-        gap: 8px;
-        border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #F6F6FA;
-    }
-
-    .mir_icon {
-        width: 30px;
-        height: 9.333px;
-        flex-shrink: 0;
-        background-color: #F6F6FA;
-    }
-
     .card_block_info {
         width: 255px;
         height: 24px;
@@ -984,7 +971,7 @@ body {
 
 /* //////////////////////////////////// */
 
-  .recipient_info_container {
+  #recipient_info_container {
         width: 288px;
         height: 344px;
         gap: 24px;
@@ -1119,24 +1106,6 @@ body {
         height: 20px;
     }
 
-    .mir_icon_container {
-        width: 32px;
-        height: 24px;
-        gap: 8px;
-        border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #F6F6FA;
-    }
-
-    .mir_icon {
-        width: 30px;
-        height: 9.333px;
-        flex-shrink: 0;
-        background-color: #F6F6FA;
-    }
-
     .price_shipping_icon{
         width: 22px;
         height: 22px;
@@ -1238,6 +1207,14 @@ body {
     .delivery_block_info_text {
         width: 242px;
         height: 32px;
+    }
+    
+    .free_delivery_tooltip {
+        display: none;
+    }
+
+    .delivery_tooltip_content {
+        display: none;
     }
 
     .delivery_block_info_text, .delivery_block_info_text_inner {
@@ -1388,15 +1365,70 @@ body {
         text-decoration: underline;
     }
 
-/* checkbox */
+    /* CUSTOM RADIO INPUT */
+
+    /* для элемента input c type="radio" */
+    .custom-radio {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    
+    /* для элемента label связанного с .custom-radio */
+    .custom-radio+label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+    }
+    
+    /* создание в label псевдоэлемента  before со следующими стилями */
+    .custom-radio+label::before {
+        content: '';
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border: 1px solid #adb5bd;
+        border-radius: 50%;
+        margin-right: 0.5em;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+    }
+    
+    /* стили при наведении курсора на радио */
+    .custom-radio:not(:disabled):not(:checked)+label:hover::before {
+        border-color: #b60773;
+    }
+    
+    /* стили для активной радиокнопки (при нажатии на неё) */
+    .custom-radio:not(:disabled):active+label::before {
+        background-color: #b60773;;
+        border-color: #b60773;;
+    }
+    
+    /* стили для радиокнопки, находящейся в фокусе */
+    .custom-radio:focus+label::before {
+        box-shadow: 0 0 0 0.2rem rgba(226, 94, 238, 0.418);
+    }
+    
+    /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+    .custom-radio:focus:not(:checked)+label::before {
+        border-color: #b60773;
+    }
+    
+    /* стили для радиокнопки, находящейся в состоянии checked */
+    .custom-radio:checked+label::before {
+        background-color: #CB11AB;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    /* custom checkbox */
 
     .hidden_checkbox {
         display: none;
     }
-
-    /* .checkbox {
-        background-color: #FFFFFF;
-    } */
 
     .custom_checkbox {
         display: flex;
@@ -1452,15 +1484,7 @@ body {
     }
 
     #item_1_sizes {
-        /* background-color: #FFFFFF;
-        display: block;
-        width: 20px;
-        height: 20px;
-        position: relative;
-        border-radius: 4px; */
         bottom: 42px;
-        /* left: 4px;
-        z-index: 2;  */
     }
 
     .item_sizes {
