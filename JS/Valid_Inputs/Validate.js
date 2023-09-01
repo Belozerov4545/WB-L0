@@ -20,25 +20,28 @@ function validatePhone(phone) {
   return reg.test(String(phone));
 }
 
+function validFirstName(firstName) {
+  let reg = /^[A-Za-z]+$/;
+  return reg.test(firstName);
+}
+
+function validLastName(lastName) {
+  let reg = /^[A-Za-z]+$/;
+  return reg.test(lastName);
+}
+
 form.addEventListener('submit', function (event) {
   event.preventDefault()
+  let firstNameVal = firstNameInput.value;
+  let lastNameVal = lastNameInput.value;
   let emailVal = emailInput.value;
   let telVal = telInput.value;
   let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
-
-  // console.log('from first name: ', firstNameInput.value);
-  // console.log('from last name: ', lastNameInput.value);
-  // console.log('from email: ', emailInput.value);
-  // console.log('from tel: ', telInput.value);
-  // console.log('from inn: ', innInput.value);
 
   formInputs.forEach((input) => {
     if (input.value === '') {
       input.classList.add('error');
       console.log('Заполните поле');
-      if (input.at) {
-        
-      }
     } else {
       input.classList.remove('error');
     }
@@ -46,6 +49,30 @@ form.addEventListener('submit', function (event) {
 
   if (emptyInputs.length !== 0) {
     return false
+  }
+
+  if (!validFirstName(firstNameVal)) {
+    console.log('невалидное имя');
+    firstNameInput.classList.add('error');
+    if (firstNameInput.classList.contains('error')) {
+      firstNameInput.style.borderBottom = '1px red solid';
+    }
+    return false;
+  } else {
+    firstNameInput.classList.remove('error');
+    firstNameInput.style.borderBottom = 'none';
+  }
+
+  if (!validLastName(lastNameVal)) {
+    console.log('невалидная фамилия');
+    lastNameInput.classList.add('error');
+    if (lastNameInput.classList.contains('error')) {
+      lastNameInput.style.borderBottom = '1px red solid';
+    }
+    return false;
+  } else {
+    lastNameInput.classList.remove('error');
+    lastNameInput.style.borderBottom = 'none';
   }
 
   if (!validateEmail(emailVal)) {

@@ -865,18 +865,18 @@
                     </div>
                     <form method="post" id="recipient_info_container">
                         <div class="data_part">
-                            <input id="first_name_input" class="name_part_input js-input" type="text" name="first_name" placeholder="Имя">
-                            <input id="last_name_input" class="name_part_input js-input" type="text" name="last_name" placeholder="Фамилия">
+                            <input required id="first_name_input" class="name_part_input js-input" type="text" name="first_name" placeholder="Имя">
+                            <input required id="last_name_input" class="name_part_input js-input" type="text" name="last_name" placeholder="Фамилия">
                         </div>
                         <div class="data_part">
-                            <input id="email_input" class="data_part_input js-input" type="email" name="email" placeholder="Почта">
+                            <input required id="email_input" class="data_part_input js-input" type="email" name="email" placeholder="Почта">
                             <div class="data_part_input">
                                 <label class="tel_input_label" for="tel_input">Телефон</label>
-                                <input id="tel_input" class="data_part_input js-input" type="tel" name="tel" placeholder="+7 (988) 123-45-67">
+                                <input required id="tel_input" class="data_part_input js-input" type="tel" name="tel" placeholder="+7 (988) 123-45-67">
                             </div>
                             <div class="data_part_input">
                                 <label class="inn_input_label" for="inn_input">Для таможенного оформления</label>
-                                <input id="inn_input" class="data_part_input js-input" name="inn" placeholder="ИНН">
+                                <input required id="inn_input" class="data_part_input js-input" name="inn" placeholder="ИНН">
                             </div>
                         </div>
                     </form>
